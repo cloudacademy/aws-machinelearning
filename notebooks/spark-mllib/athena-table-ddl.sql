@@ -1,4 +1,4 @@
-CREATE EXTERNAL TABLE `censusadult_data_good`(
+CREATE EXTERNAL TABLE `adult_data_clean`(
   `age` bigint, 
   `workclass` string, 
   `education` string, 
@@ -15,7 +15,7 @@ STORED AS INPUTFORMAT
 OUTPUTFORMAT 
   'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION
-  's3://cloudacademy-emr-spark-data/good.data'
+  's3://cloudacademy-emr-spark-data/clean.data'
 TBLPROPERTIES (
   'classification'='csv',
   'skip.header.line.count'='1')
