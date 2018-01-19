@@ -160,8 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(err ? 'ERROR!' : 'UPLOADED.');
 
                 var params = {
-                    Image: { /* required */
-                        //Bytes: new Buffer('...') || 'STRING_VALUE' /* Strings will be Base-64 encoded on your behalf */,
+                    Image: {
                         S3Object: {
                             Bucket: albumBucketName,
                             Name: fileName
@@ -174,10 +173,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 var rekognition = new AWS.Rekognition();
                 rekognition.detectFaces(params, function(err, data) {
-                    if (err) console.log(err, err.stack); // an error occurred
+                    if (err)
+                        console.log(err, err.stack);
                     else {
-                        // successful response
-                        //rek.innerHTML = "<pre>" + JSON.stringify(data, undefined, 2) + "</pre>";
                         rek.innerHTML = library.json.prettyPrint(data);
                     }
                 });
