@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var snap = takeSnapshot();
 
-        // Show image. 
+        // Show image.
         image.setAttribute('src', snap);
         image.classList.add("visible");
 
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function takeSnapshot() {
-        // Here we're using a trick that involves a hidden canvas element.  
+        // Here we're using a trick that involves a hidden canvas element.
 
         var hidden_canvas = document.querySelector('canvas'),
             context = hidden_canvas.getContext('2d');
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Turn the canvas image into a dataURL that can be used as a src for our photo.
             var dataURL = hidden_canvas.toDataURL('image/png');
             var blobData = dataURItoBlob(dataURL);
-            var fileName = "pix1";
+            var fileName = "pix." + getId() + ".png";
             var params = { Key: fileName, ContentType: 'image/png', Body: blobData };
             s3.upload(params, function(err, data) {
                 console.log(data);
@@ -217,6 +217,11 @@ document.addEventListener('DOMContentLoaded', function() {
             array.push(binary.charCodeAt(i));
         }
         return new Blob([new Uint8Array(array)], { type: 'image/png' });
+    }
+
+    function getId() {
+        var newDate = new Date();
+        return '' + parseInt(newDate.getMonth() + 1) + '-' + newDate.getDate() + '-' + newDate.getFullYear() + '-' + newDate.getTime()
     }
 
     if (!library)
