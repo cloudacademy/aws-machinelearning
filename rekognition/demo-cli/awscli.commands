@@ -1,0 +1,5 @@
+aws rekognition detect-labels --image "S3Object={Bucket=cloudacademy-rek, Name=car.jpg}" --region us-east-1 | jq -c '.Labels[] | select(.Name | contains("Car","Vehicle"))' | paste -sd, - | xargs -I {} aws ses send-email --from no-reply@democloudinc.com --to jeremycook123@gmail.com --subject "hello boss" --text {} --region us-east-1
+
+=======================================
+
+aws rekognition detect-labels --image "S3Object={Bucket=cloudacademy-rek, Name=car.jpg}" --region us-east-1 | jq -c '.Labels[] | select(.Name | contains("Car","Vehicle"))' | paste -sd, - | ./sendemail.sh
