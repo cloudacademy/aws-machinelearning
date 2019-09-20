@@ -49,7 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Create an object URL for the video stream and
                 // set it as src of our HTLM video element.
-                video.src = window.URL.createObjectURL(stream);
+                //video.src = window.URL.createObjectURL(stream);
+
+                //updated (and tested) to run on Chrome Version 76.0.3809.132 (Official Build) (64-bit)
+                video.srcObject = stream;
 
                 // Play the video element to start the stream.
                 video.play();
