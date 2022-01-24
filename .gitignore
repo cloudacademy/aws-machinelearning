@@ -27,6 +27,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+*.backup
+*.BACKUP
+*.swp
 
 
 # End of https://www.gitignore.io/api/macos
