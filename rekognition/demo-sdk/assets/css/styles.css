@@ -1,178 +1,123 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
-* {
-    box-sizing: border-box;
+
+
+body {
     margin: 0;
-    padding: 0;
+    background: #232f3e;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
 }
 
-html {
-    background-color: #fff;
-    font: normal 16px/1.5 sans-serif;
-    color: #333;
+
+.the_body {
+    background: #232f3e;
+    color: #FFFFFF;
 }
 
-h3 {
-    font: normal 32px/1.5 'Open Sans', sans-serif;
-    color: #2c3e50;
-    margin: 50px 0;
-    text-align: center;
+.logo {
+    float: left;
+    padding: 10px 0;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #efefef;
+/* this is weird. It sets the link color all the time
+.the_body >  p > a {
+    color: #CCCCFF;
+}
+*/
+
+/* proper way to change link colors */
+/* TODO: rename the_body to the_body_div */
+
+/* give them a default value, before you can dork with the colors */
+.the_body a {
+  /* Specify non-transparent defaults to certain properties,
+     allowing them to be styled with the :visited state */
+  background-color: #232f3e;
+  /*border: 1px solid white;*/
 }
 
-.app {
-    width: 100%;
-    position: relative;
+
+/* a unvisited link */
+.the_body a:link {
+    color: aquamarine;
 }
 
-.app #start-camera {
-    display: none;
-    border-radius: 3px;
-    max-width: 400px;
-    color: #fff;
-    background-color: #448AFF;
-    text-decoration: none;
-    padding: 15px;
-    opacity: 0.8;
-    margin: 50px auto;
-    text-align: center;
+/* a visited link */
+.the_body a:visited {
+    color: antiquewhite;
 }
 
-.app video#camera-stream {
-    display: none;
-    width: 100%;
+/* style sheet for radio buttons */
+/* begin */
+p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
 }
 
-.app img#snap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    display: none;
+input {
+    margin: .4rem;
+}
+/* radio button end */
+
+/* style sheet for slider switch */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
-.app #error-message {
-    width: 100%;
-    background-color: #ccc;
-    color: #9b9b9b;
-    font-size: 28px;
-    padding: 200px 100px;
-    text-align: center;
-    display: none;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.app .controls {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 20;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 30px;
-    display: none;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.app .controls a {
-    border-radius: 50%;
-    color: #fff;
-    background-color: #111;
-    text-decoration: none;
-    padding: 15px;
-    line-height: 0;
-    opacity: 0.7;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
+input:checked + .slider {
+  background-color: #2196F3;
 }
 
-.app .controls a:hover {
-    opacity: 1;
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
 }
 
-.app .controls a.disabled {
-    background-color: #555;
-    opacity: 0.5;
-    cursor: default;
-    pointer-events: none;
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
-.app .controls a.disabled:hover {
-    opacity: 0.5;
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
 }
 
-.app .controls a i {
-    font-size: 18px;
+.slider.round:before {
+  border-radius: 50%;
 }
 
-.app .controls #take-photo i {
-    font-size: 32px;
-}
 
-.app canvas {
-    display: none;
-}
-
-.app video#camera-stream.visible,
-.app img#snap.visible,
-.app #error-message.visible {
-    display: block;
-}
-
-.app .controls.visible {
-    display: flex;
-}
-
-@media(max-width: 1000px) {
-    .container {
-        margin: 40px;
-    }
-    .app #start-camera.visible {
-        display: block;
-    }
-    .app .controls a i {
-        font-size: 16px;
-    }
-    .app .controls #take-photo i {
-        font-size: 24px;
-    }
-}
-
-@media(max-width: 600px) {
-    .container {
-        margin: 10px;
-    }
-    .app #error-message {
-        padding: 80px 50px;
-        font-size: 18px;
-    }
-    .app .controls a i {
-        font-size: 12px;
-    }
-    .app .controls #take-photo i {
-        font-size: 18px;
-    }
-}
-
-pre {
-    background-color: ghostwhite;
-}
-
-.json-key {
-    color: brown;
-}
-
-.json-value {
-    color: navy;
-}
-
-.json-string {
-    color: olive;
-}
+/* slider switch end */

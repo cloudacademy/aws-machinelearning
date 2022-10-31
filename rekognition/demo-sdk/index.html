@@ -1,53 +1,72 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+<link rel="manifest" href="manifest.json" >
+
+<script src="assets/js/aws-sdk.js"></script>
+<script src="assets/js/face.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="css/stylesface.css"> -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CloudAcademy: AWS Rekogition Demo</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
-
+<meta charset="UTF-8">
+<title>Face Detector</title>
+<link rel="shortcut icon" type="image/png" href="assets/imgs/rtp-aws-disolved-nose-16x16.png">
 </head>
+
+
+
 
 <body>
 
 
-    <h3>CloudAcademy: AWS Rekogition Demo</h3>
+<!-- ---------------------------------------------------------------- -->
+<!-- ---------------------------------------------------------------- -->
 
-    <div class="container">
 
-        <div class="app">
 
-            <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+<div class="the_body">
+
+
+        <div>
+            <a href="#" id="start-camera" class="visible"> Touch the camera icon to begin prediction.</a>
+        </div>
+
+        <div>
             <video id="camera-stream"></video>
+        </div>
+
+        <div>
             <img id="snap">
+        </div>
 
+        <div>
             <p id="error-message"></p>
+        </div>
 
-            <div class="controls">
-                <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
-                <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-                <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>
-            </div>
+        <div>
+            <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
+            <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+            <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>
+        </div>
 
+        <div>
             <!-- Hidden canvas element. Used for taking snapshot of video. -->
             <canvas></canvas>
 
         </div>
-    </div>
 
-    <div class="container">
-        <pre><code id="rek"></code></pre>
-    </div>
 
-    <script src="assets/js/aws-sdk.js"></script>
-    <script src="assets/js/script.js"></script>
+        <div>
+            <pre><code id="rek"></code></pre>
+        </div>
+
+
+</div> <!-- The body div -->
+
 
 </body>
-
 </html>
